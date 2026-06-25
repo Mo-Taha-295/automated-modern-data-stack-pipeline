@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: airbnb_data  # <-- dbt treats this as BOTH the source name AND the schema name
+    database: raw
+    tables:
+      - name: booking
