@@ -4,4 +4,6 @@ sources:
   - name: airbnb_data  # <-- dbt treats this as BOTH the source name AND the schema name
     database: raw
     tables:
-      - name: booking
+      - name: BOOKING
+      - name: LISTINGS
+      - name: HOSTS

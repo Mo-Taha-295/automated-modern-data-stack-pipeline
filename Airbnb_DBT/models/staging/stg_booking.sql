@@ -1,2 +1,2 @@
 select *
- from {{source('airbnb_data', 'booking')}}
+ from {{source('airbnb_data', 'BOOKING')}}
