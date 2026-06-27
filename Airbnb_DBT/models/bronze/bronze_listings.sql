@@ -1,10 +1,11 @@
 {{config(
     materialized='incremental' , 
-    unique_key='LISTING_ID'
+    incremental_strategy= 'append'
 )}}
-select * 
+select * , 
+current_timestamp() as dbt_bronze_loaded_at 
 from {{source('airbnb_data', 'LISTINGS')}}
+
 {% if is_incremental() %}
-  -- We use >= to ensure no data falling on the exact max timestamp boundary is missed
-  where CREATED_AT >= (select max(CREATED_AT) from {{ this }})
+  where CREATED_AT > (select max(CREATED_AT) from {{ this }}) -- filtering for new records based on the CREATED_AT column cause we don't have a load_at column in the source table 'til now
 {% endif %}
