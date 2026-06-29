@@ -1,7 +1,3 @@
-{{ config(
-    materialized='table'
-) }}
-
 select
 
     listing_id,
