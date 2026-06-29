@@ -21,7 +21,7 @@ cleaned as (
             else false
         end as is_superhost,
 
-            response_rate/100 as response_rate,
+            round(response_rate/100 ,2 ) as response_rate,
 
          created_at ,
 
