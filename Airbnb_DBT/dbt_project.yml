@@ -21,6 +21,6 @@ models:
     bronze:
       +materialized: view
       +schema: bronze
-    marts:
+    silver:
       +materialized: table
       +schema: silver
