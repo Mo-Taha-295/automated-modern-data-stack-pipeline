@@ -1,22 +1,32 @@
 version: 2
 
-models :
-  - name : bronze_hosts
+models:
+  - name: bronze_hosts
     columns:
-      - name : HOST_ID
-        data_tests : 
-         - not_null
-         - unique
-  - name : bronze_listings
-    columns:
-      - name : LISTING_ID
-        data_tests : 
-         - not_null
-         - unique
+      - name: HOST_ID
+        data_tests:
+          - not_null
+          - unique
 
-  - name : bronze_booking
+  - name: bronze_listings
     columns:
-      - name : BOOKING_ID
-        data_tests : 
-         - not_null
-         - unique
+      - name: LISTING_ID
+        data_tests:
+          - not_null
+          - unique
+      - name : PROPERTY_TYPE
+        data_tests:
+          - accepted_values: 
+              arguments:
+                values: ['Apartment', 'House', 'Condo']
+              config:
+                severity: warn
+
+  - name: bronze_booking
+    columns:
+      - name: BOOKING_ID
+        data_tests:
+          - not_null
+          - unique
+
+
